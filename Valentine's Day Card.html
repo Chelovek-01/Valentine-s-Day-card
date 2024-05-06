@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day Card by Murad</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #fec1b2;
+        }
+
+        .container {
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+        }
+
+        .valentines {
+            display: grid;
+            place-items: center;
+            position: relative;
+        }
+
+        .valentines::before {
+            content: '';
+            margin-bottom: 90px;
+            width: 300px;
+            height: 210px;
+            padding: 20px;
+            border-radius: 30%;
+            border: 10px solid rgba(204, 144, 144, 0.123);
+        }
+
+        .valentines::after {
+            z-index: -2;
+            position: absolute;
+            margin-bottom: 75px;
+            content: '';
+            width: 300px;
+            height: 220px;
+            background-color: rgba(204, 144, 144, 0.123);
+            border-radius: 30%;
+        }
+
+        .envelope {
+            position: absolute;
+            margin-bottom: 90px;
+            z-index: 0;
+            width: 250px;
+            height: 180px;
+            background: #ce5168;
+            clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+            animation: animateEnvelope 5s linear infinite;
+        }
+
+        .front {
+            position: absolute;
+            z-index: 2;
+            width: 250px;
+            height: 250px;
+            background: #e7aab7;
+            clip-path: polygon(50% 66%, 100% 32%, 100% 100%, 0 100%, 0 32%);
+            animation: animateFront 5s linear infinite;
+        }
+
+        .front::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background-color: rgb(230, 150, 164);
+            clip-path: polygon(35% 50%, 100% 0, 100% 100%, 100% 100%);
+        }
+
+        .card {
+            text-align: center;
+            position: absolute;
+            background-color: #fae680;
+            padding-bottom: 70px;
+            padding-top: 15px;
+            margin-bottom: 30px;
+            border: 1px dashed rgb(143, 136, 136);
+            animation: animateCard 5s linear infinite;
+        }
+
+        .card::before {
+            content: "Happy Valentine's Day!";
+            font-family: 'Pacifico', cursive;
+            padding: 10px;
+            font-size: 1.3em;
+        }
+
+        .heart {
+            color: #d1273f;
+            font-size: 2em;
+            cursor: default;
+            font-family: 'Pacifico', cursive;
+            -webkit-user-select: none;
+            user-select: none;
+            -moz-user-select: none;
+        }
+
+        .heart p {
+            font-size: 0.7em;
+            cursor: pointer;
+        }
+
+        .shadow {
+            position: absolute;
+            margin-top: 300px;
+            width: 290px;
+            height: 15px;
+            background-color: rgba(32, 32, 32, 0.568);
+            border-radius: 48%;
+            animation: animateShadow 5s linear infinite;
+        }
+
+        #letter {
+            z-index: 5;
+            display: none;
+            grid-auto-rows: minmax(0, auto);
+            position: relative;
+            animation: animateLetter 1.1s linear;
+        }
+
+        #letter .content {
+            color: rgb(33, 33, 116);
+            justify-self: center;
+            align-self: center;
+            margin-top: 5%;
+            margin-bottom: 5%;
+            padding: 20px;
+            background-color: #fae680;
+            width: 75vw;
+            font-family: 'Pacifico', cursive;
+            font-size: 1.5em;
+            border: 1px dashed rgb(143, 136, 136);
+            -webkit-box-shadow: 0px 4px 8px 15px rgba(34, 60, 80, 0.17);
+            -moz-box-shadow: 0px 4px 8px 15px rgba(34, 60, 80, 0.17);
+            box-shadow: 0px 4px 8px 15px rgba(34, 60, 80, 0.17);
+        }
+        #p:hover {
+            transform: rotate(90deg);
+            transition: transform 0.6s linear;
+        }
+        @keyframes animateEnvelope {
+            0% {
+                margin-bottom: 90px;
+            }
+            50% {
+                margin-bottom: 200px;
+            }
+            100% {
+                margin-bottom: 90px;
+            }
+        }
+
+        @keyframes animateCard {
+            0% {
+                margin-bottom: 30px;
+            }
+            50% {
+                margin-bottom: 170px;
+            }
+            100% {
+                margin-bottom: 30px;
+            }
+        }
+
+        @keyframes animateFront {
+            0% {
+                margin-bottom: 0px;
+            }
+            50% {
+                margin-bottom: 110px;
+            }
+            100% {
+                margin-bottom: 0px;
+            }
+        }
+
+        @keyframes animateShadow {
+            0% {
+                width: 290px;
+                background-color: rgba(32, 32, 32, 0.568);
+            }
+            50% {
+                width: 330px;
+                background-color: rgba(27, 27, 27, 0.719);
+            }
+            100% {
+                width: 290px;
+                background-color: rgba(32, 32, 32, 0.568);
+            }
+        }
+
+        @keyframes animateLetter {
+            from {
+                bottom: -320px;
+                opacity: 0;
+            }
+            to {
+                bottom: 0;
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="valentines">
+            <div class="envelope"></div>
+            <div class="front"></div>
+            <div class="card" onclick="showLetter()">
+                <div class="heart">&#10084;
+                    <p>~open me~</p>
+                </div>
+            </div>
+        </div>
+        <div class="shadow"></div>
+    </div>
+    <div id="letter">
+        <div class="content">
+            <p id="p" style="right: 20%;position: absolute; cursor: pointer;" onclick="hideLetter()">&#10005;</p>
+            <h3>Your advertisement could be here</h3>
+        </div>
+    </div>
+    <noscript>Please, apply using JavaScript in your browser</noscript>
+    <script>
+        var letter = document.getElementById('letter'),
+            container = document.querySelector('.container');
+        function showLetter() {
+            container.style.display = 'none';
+            letter.style.display = 'grid';
+        }
+        function hideLetter() {
+            container.style.display = 'grid';
+            letter.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
